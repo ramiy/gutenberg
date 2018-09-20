@@ -108,14 +108,14 @@ describe( 'mediaUpload', () => {
 
 	it( 'should call error handler with the correct error object if file type is not allowed for user', () => {
 		const onError = jest.fn();
-		const allowedMimeTypes = { aac: 'audio/aac' };
+		const wpAllowedMimeTypes = { aac: 'audio/aac' };
 
 		mediaUpload( {
 			allowedTypes: [ 'image' ],
 			filesList: [ validMediaObj ],
 			onFileChange: onFileChangeSpy,
 			onError,
-			allowedMimeTypes,
+			wpAllowedMimeTypes,
 		} );
 		expect( onError ).toHaveBeenCalled();
 		expect( onError.mock.calls[ 0 ][ 0 ].code ).toBe( 'MIME_TYPE_NOT_ALLOWED_FOR_USER' );
